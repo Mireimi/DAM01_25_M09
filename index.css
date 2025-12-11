@@ -1,0 +1,206 @@
+/* --- COLORS PASTELL I VARIABLES --- */
+:root {
+    --bg-color: #fff0f5;       /* Fons rosa molt molt suau */
+    --card-bg: #ffffff;        /* Blanc pur */
+    --primary-pink: #ffc2d1;   /* Rosa pastís */
+    --accent-pink: #ff8fa3;    /* Rosa una mica més fort */
+    --text-main: #6d5a5e;      /* Color text (marró rosat) */
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--bg-color);
+    /* Topets blancs molt subtils de fons */
+    background-image: radial-gradient(#ffffff 20%, transparent 20%);
+    background-size: 30px 30px;
+    color: var(--text-main);
+    padding-bottom: 50px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- HEADER "NÚVOL" --- */
+header {
+    background-color: var(--white);
+    padding: 60px 20px;
+    text-align: center;
+    margin-bottom: 50px;
+    /* Forma arrodonida només a baix, com un núvol penjat */
+    border-radius: 0 0 50px 50px;
+    box-shadow: 0 10px 30px rgba(255, 194, 209, 0.3);
+}
+
+header h1 {
+    color: var(--accent-pink);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Decoració de cors al títol */
+header h1::after {
+    content: '♥';
+    position: absolute;
+    top: -15px;
+    right: -25px;
+    font-size: 1.5rem;
+    color: var(--primary-pink);
+    transform: rotate(20deg);
+}
+
+header p {
+    font-weight: 700;
+    color: var(--primary-pink);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* --- SECCIONS --- */
+section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    color: var(--accent-pink);
+    margin-bottom: 30px;
+    text-align: center; /* Títol centrat */
+    position: relative;
+}
+
+/* Línies decoratives al costat del títol */
+.section-title::before, .section-title::after {
+    content: '✦';
+    color: var(--primary-pink);
+    margin: 0 15px;
+}
+
+/* --- GRID DE TARGETES --- */
+.exercises-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* --- TARGETES ESTIL "BOMBÓ" --- */
+.card {
+    background-color: var(--white);
+    border-radius: 35px; /* Molt, molt rodó */
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.15); /* Ombra suau */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 4px solid transparent; /* Vora invisible per defecte */
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+    border-color: var(--bg-color); /* Vora rosa suau al passar el ratolí */
+}
+
+/* Contingut intern */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Tot centrat */
+    text-align: center;
+    height: 100%;
+}
+
+/* Part superior: Títol i icona */
+.card-top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    color: var(--accent-pink);
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: var(--primary-pink);
+    transition: transform 0.5s ease;
+}
+
+.card:hover .icon {
+    transform: rotate(20deg) scale(1.2); /* La icona balla al hover */
+}
+
+/* Etiqueta (Tag) simple */
+.tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.tag.html { background-color: var(--primary-pink); }
+.tag.css { background-color: var(--accent-pink); }
+
+.card p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    flex-grow: 1; /* Ocupa l'espai disponible */
+}
+
+/* --- BOTÓ RODÓ --- */
+.btn {
+    text-decoration: none;
+    background-color: var(--bg-color);
+    color: var(--accent-pink);
+    padding: 12px 30px;
+    border-radius: 50px; /* Completament rodó */
+    font-weight: 700;
+    transition: all 0.3s ease;
+    width: 100%;
+    border: 2px solid var(--primary-pink);
+}
+
+.btn:hover {
+    background-color: var(--accent-pink);
+    color: var(--white);
+    border-color: var(--accent-pink);
+    transform: scale(1.05); /* Es fa una mica més gran */
+}
+
+.btn.disabled {
+    background-color: #f5f5f5;
+    color: #ccc;
+    border-color: #eee;
+    pointer-events: none;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: var(--primary-pink);
+    font-weight: 700;
+}
