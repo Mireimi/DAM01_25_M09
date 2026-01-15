@@ -1,10 +1,15 @@
 /* --- COLORS PASTELL I VARIABLES --- */
 :root {
-    --bg-color: #fff0f5;       /* Fons rosa molt molt suau */
-    --card-bg: #ffffff;        /* Blanc pur */
-    --primary-pink: #ffc2d1;   /* Rosa pastís */
-    --accent-pink: #ff8fa3;    /* Rosa una mica més fort */
-    --text-main: #6d5a5e;      /* Color text (marró rosat) */
+    --bg-color: #fff0f5;
+    /* Fons rosa molt molt suau */
+    --card-bg: #ffffff;
+    /* Blanc pur */
+    --primary-pink: #ffc2d1;
+    /* Rosa pastís */
+    --accent-pink: #ff8fa3;
+    /* Rosa una mica més fort */
+    --text-main: #6d5a5e;
+    /* Color text (marró rosat) */
     --white: #ffffff;
 }
 
@@ -77,12 +82,14 @@ section {
     font-size: 1.6rem;
     color: var(--accent-pink);
     margin-bottom: 30px;
-    text-align: center; /* Títol centrat */
+    text-align: center;
+    /* Títol centrat */
     position: relative;
 }
 
 /* Línies decoratives al costat del títol */
-.section-title::before, .section-title::after {
+.section-title::before,
+.section-title::after {
     content: '✦';
     color: var(--primary-pink);
     margin: 0 15px;
@@ -98,11 +105,14 @@ section {
 /* --- TARGETES ESTIL "BOMBÓ" --- */
 .card {
     background-color: var(--white);
-    border-radius: 35px; /* Molt, molt rodó */
+    border-radius: 35px;
+    /* Molt, molt rodó */
     padding: 30px;
-    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.15); /* Ombra suau */
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.15);
+    /* Ombra suau */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 4px solid transparent; /* Vora invisible per defecte */
+    border: 4px solid transparent;
+    /* Vora invisible per defecte */
     position: relative;
     overflow: hidden;
 }
@@ -110,14 +120,16 @@ section {
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
-    border-color: var(--bg-color); /* Vora rosa suau al passar el ratolí */
+    border-color: var(--bg-color);
+    /* Vora rosa suau al passar el ratolí */
 }
 
 /* Contingut intern */
 .card-content {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Tot centrat */
+    align-items: center;
+    /* Tot centrat */
     text-align: center;
     height: 100%;
 }
@@ -145,10 +157,18 @@ section {
 }
 
 .card:hover .icon {
-    transform: rotate(20deg) scale(1.2); /* La icona balla al hover */
+    transform: rotate(20deg) scale(1.2);
+    /* La icona balla al hover */
 }
 
 /* Etiqueta (Tag) simple */
+.tags {
+    display: flex;
+    flex-wrap: nowrap;
+    /* 🔴 CLAVE: evita que bajen */
+    gap: 10px;
+}
+
 .tag {
     font-size: 0.7rem;
     font-weight: 700;
@@ -156,18 +176,35 @@ section {
     color: var(--white);
     padding: 5px 15px;
     border-radius: 20px;
-    margin-bottom: 20px;
-    display: inline-block;
+    display: inline-flex;
+    /* mejor que inline-block */
+    white-space: nowrap;
+    /* evita saltos internos */
+    margin-bottom: 15px;
+    background-color: var(--primary-pink);
 }
 
-.tag.html { background-color: var(--primary-pink); }
-.tag.css { background-color: var(--accent-pink); }
+.tagMo{
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: inline-flex;
+    /* mejor que inline-block */
+    white-space: nowrap;
+    /* evita saltos internos */
+    margin-bottom: 15px;
+    background-color: var(--accent-pink);
+}
+
 
 .card p {
     font-size: 0.95rem;
     margin-bottom: 25px;
     line-height: 1.5;
-    flex-grow: 1; /* Ocupa l'espai disponible */
+    flex-grow: 1;
 }
 
 /* --- BOTÓ RODÓ --- */
@@ -176,18 +213,19 @@ section {
     background-color: var(--bg-color);
     color: var(--accent-pink);
     padding: 12px 30px;
-    border-radius: 50px; /* Completament rodó */
+    border-radius: 50px;
     font-weight: 700;
     transition: all 0.3s ease;
     width: 100%;
     border: 2px solid var(--primary-pink);
+    margin-bottom: 15px;
 }
 
 .btn:hover {
     background-color: var(--accent-pink);
     color: var(--white);
     border-color: var(--accent-pink);
-    transform: scale(1.05); /* Es fa una mica més gran */
+    transform: scale(1.05);
 }
 
 .btn.disabled {
