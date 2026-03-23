@@ -1,5 +1,5 @@
-const productosJSON = `[
-  {
+export let camisetas = [
+{
     "id": "TSH01",
     "nombre": "MACACARENA",
     "descripcion": "Quan balles sense vergonya i el ritme et domina.",
@@ -52,6 +52,5 @@ const productosJSON = `[
     },
     "tags": ["premium"]
   }
-]
-`;
+];
 
