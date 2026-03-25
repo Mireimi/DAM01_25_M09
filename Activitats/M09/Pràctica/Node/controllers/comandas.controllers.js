@@ -13,15 +13,62 @@ export function create(req, res) {
 
     if (!comanda.items || comanda.items.length === 0) return res.status(400).json({ error: 'La comanda debe contener al menos un item' });
 
-    if (cantidad <= 0) return res.status(400).json({ error: 'La cantidad de cada item debe ser mayor a 0' });
+    const tallasValidas = ['S', 'M', 'L', 'XL', 'XXL'];
+    const coloresValidos = ['blanco', 'negro', 'gris', 'azul'];
 
-    if (!camisetaId) return res.status(400).json({ error: 'Cada item debe tener un id de camiseta existente' });
+    for (let i = 0; i < comanda.items.length; i++) {
+        const item = comanda.items[i];
+        
+        if (!item.camisetaId) {
+            return res.status(400).json({ error: 'El item en la posición ${i} debe tener un id de camiseta' });
+        }
+        if (item.cantidad === undefined || item.cantidad <= 0) {
+            return res.status(400).json({ error: 'La cantidad del item ${item.camisetaId} debe ser mayor a 0' });
+        }
+        if (!tallasValidas.includes(item.talla)) {
+            return res.status(400).json({ error: 'Talla inválida en ${item.camisetaId}. Debe ser: S, M, L, XL, XXL' });
+        }
+        if (!coloresValidos.includes(item.color)) {
+            return res.status(400).json({ error: 'Color inválido en ${item.camisetaId}. Debe ser: blanco, negro, gris o azul' });
+        }
+    }
 
-    if (!['S', 'M', 'L', 'XL', 'XXL'].includes(talla)) return res.status(400).json({ error: 'Talla debe ser una de las siguientes: S, M, L, XL, XXL' });
-
-    if(!['blanco','negro','gris','azul'].includes(color)) return res.status(400).json({ error: 'Color debe ser uno de los siguientes: blanco, negro, azul o gris'});
-    
     comandasService.create(comanda);
 
     res.status(200).json(comanda);
+
+    try {
+
+        const nuevaComanda = comandasService.crearYProcesar(comanda);
+
+        return res.status(201).json(nuevaComanda);
+
+    } catch (error) {
+
+        return res.status(500).json({ error: 'Error al procesar la comanda' });
+    }
+}
+
+export function listarComandas(req, res) {
+    try {
+        const comandas = comandasService.obtenerTodas();
+        return res.status(200).json(comandas);
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al obtener las comandas' });
+    }
+}
+
+export function obtenerDetalle(req, res) {
+    try {
+        const id = req.params.id;
+        const comanda = comandasService.obtenerPorId(id);
+
+        if (!comanda) {
+            return res.status(404).json({ error: 'Comanda no encontrada' });
+        }
+
+        return res.status(200).json(comanda);
+    } catch (error) {
+        return res.status(500).json({ error: 'Error al buscar la comanda' });
+    }
 }
